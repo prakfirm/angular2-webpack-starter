@@ -70,3 +70,8 @@ dll/
 *.css.shim.ts
 *.ngsummary.json
 *.shim.ngstyle.ts
+
+/src/style/**/*.css
+/src/app/**/*.css
+/**/*.css.ts
+/**/*.css.shim.ts
