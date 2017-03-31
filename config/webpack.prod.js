@@ -9,6 +9,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
+const CompressionPlugin = require('compression-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
@@ -17,6 +18,8 @@ const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplaceme
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 /**
  * Webpack Constants
@@ -229,34 +232,34 @@ module.exports = function (env) {
 
 
       // AoT
-      // new NormalModuleReplacementPlugin(
-      //   /@angular(\\|\/)upgrade/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /@angular(\\|\/)compiler/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /@angular(\\|\/)platform-browser-dynamic/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /dom(\\|\/)debug(\\|\/)ng_probe/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /dom(\\|\/)debug(\\|\/)by/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /src(\\|\/)debug(\\|\/)debug_node/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /src(\\|\/)debug(\\|\/)debug_renderer/,
-      //   helpers.root('config/empty.js')
-      // ),
+      new NormalModuleReplacementPlugin(
+         /@angular(\\|\/)upgrade/,
+         helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+         /@angular(\\|\/)compiler/,
+         helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+         /@angular(\\|\/)platform-browser-dynamic/,
+         helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+         /dom(\\|\/)debug(\\|\/)ng_probe/,
+         helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+         /dom(\\|\/)debug(\\|\/)by/,
+         helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+         /src(\\|\/)debug(\\|\/)debug_node/,
+         helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+         /src(\\|\/)debug(\\|\/)debug_renderer/,
+         helpers.root('config/empty.js')
+      ),
 
       /**
        * Plugin: CompressionPlugin
@@ -268,8 +271,11 @@ module.exports = function (env) {
       //  install compression-webpack-plugin
       // new CompressionPlugin({
       //   regExp: /\.css$|\.html$|\.js$|\.map$/,
-      //   threshold: 2 * 1024
-      // })
+      //    asset: '[path].gz[query]',
+      //    algorithm: 'gzip',
+      //    threshold: 2 * 1024,
+      //    minRatio: 0.8
+      //}),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)
