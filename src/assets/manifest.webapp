@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "Deals Encash",
+  "launch_path": "/index.html",
+  "description": "Restaurants, Spa, Salon, Gym, Movies, Activities, Travel Deals around you",
+  "icons": {
+    "128": "/assets/icon/icon-128x128.png"
+  },
+  "developer": {
+    "name": "Pramod Kumar Raghav",
+    "url": "http://pramod.raghav@yahoo.com"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Deals Encash",
+      "description": "Restaurants, Spa, Salon, Gym, Movies, Activities, Travel Deals around you"
+    }
+  }
+}
